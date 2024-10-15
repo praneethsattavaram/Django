@@ -4,5 +4,6 @@ from . import views
 
 urlpatterns = [
     path('Logic1', views.logic1),
-    path('Logic2', views.logic2)
+    path('Logic2', views.logic2),
+    path('Logic3', views.logic3),
 ]
