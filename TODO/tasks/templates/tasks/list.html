@@ -1,1 +1,188 @@
-<h3> TO DO </h3>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMTnvzpQ8VN3OzW1jG8X5GAe/aqXNIr93nG7m1" crossorigin="anonymous">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #2C3E50, #4CA1AF); /* Bolder gradient with dark blue and cyan */
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        .todo-container {
+            background-color: #fff;
+            max-width: 600px;
+            width: 100%;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin: 20px;
+            text-align: center;
+        }
+
+        .todo-header {
+            margin-bottom: 30px;
+        }
+
+        .todo-header h2 {
+            font-size: 32px;
+            color: #2C3E50;
+            margin-bottom: 10px;
+        }
+
+        .todo-header p {
+            font-size: 14px;
+            color: #555;
+            letter-spacing: 1px;
+        }
+
+        /* Centering the form and adding proper spacing between input and button */
+        .todo-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+            gap: 15px; /* This will ensure a gap between the input and button */
+        }
+
+        .todo-form input[type="text"] {
+            width: 60%;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 25px;
+            border: 3px solid #4CA1AF; /* Thick cyan border */
+            outline: none;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            margin:10px;
+        }
+
+        .todo-form input[type="text"]:focus {
+            border-color: #2C3E50;
+        }
+
+        .todo-form button[type="submit"] {
+            background-color: #283048; /* Dark blue button */
+            color: #fff;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .todo-form button[type="submit"]:hover {
+            background-color: #4C6085; /* Hover with a lighter blue */
+        }
+
+        .todo-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .todo-item {
+            background-color: #f7f9fc;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 6px solid #283048; /* Dark blue accent on task cards */
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .todo-item span {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .todo-item.completed span {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        .actions a {
+            margin-left: 10px;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #fff;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-info {
+            background-color: #4CA1AF;
+        }
+
+        .btn-info:hover {
+            background-color: #69B1C1;
+        }
+
+        .btn-danger {
+            background-color: #E74C3C;
+        }
+
+        .btn-danger:hover {
+            background-color: #C0392B;
+        }
+
+        .no-tasks {
+            text-align: center;
+            font-size: 16px;
+            color: #666;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="todo-container">
+        <div class="todo-header">
+            <h2><i class="fas fa-tasks"></i>Todo List</h2>
+            <p>Stay organized and get things done!</p>
+        </div>
+        <div class="todo-form">
+            <form method="POST" action="/">
+                {% csrf_token %}
+                <input type="text" name="title" placeholder="Enter a new task">
+                <button type="submit" class="btn btn-primary">Add Task</button>
+            </form>
+        </div>
+
+        <ul class="todo-list">
+            {% if tasks %}
+                {% for task in tasks %}
+                    <li class="todo-item {% if task.complete %}completed{% endif %}">
+                        <span>{{ task.title }}</span>
+                        <div class="actions">
+                            <a class="btn btn-info" href="{% url 'update_task' task.id %}">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a class="btn btn-danger" href="{% url 'delete' task.id %}">
+                                <i class="fas fa-trash-alt"></i> Delete
+                            </a>
+                        </div>
+                    </li>
+                {% endfor %}
+            {% else %}
+                <p class="no-tasks">No tasks available. Start by adding one!</p>
+            {% endif %}
+        </ul>
+    </div>
+
+</body>
+</html>

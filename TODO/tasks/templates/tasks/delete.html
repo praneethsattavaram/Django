@@ -1,0 +1,94 @@
+{% comment %} <p>Are you sure you want to delete "{{item}}" ?</p>
+
+<a href= "{% url 'list' %}"> Cancel </a>
+
+<form method = "POST", action="">
+    {%csrf_token%}
+    <input type = "submit" name = "Confirm">
+</form> {% endcomment %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Confirmation</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #2C3E50, #4CA1AF); /* Dark blue to cyan gradient */
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        /* Delete Confirmation Container */
+        .delete-container {
+            background-color: #fff;
+            max-width: 400px;
+            width: 100%;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            margin: 20px;
+        }
+
+        /* Confirmation Message */
+        .delete-container p {
+            font-size: 20px;
+            color: #2C3E50;
+            margin-bottom: 20px;
+        }
+
+        /* Cancel and Confirm Button Styles */
+        .delete-container a,
+        .delete-container input[type="submit"] {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 5px;
+            font-size: 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            color: #fff;
+        }
+
+        /* Cancel Button */
+        .delete-container a {
+            background-color: #4CA1AF;
+        }
+
+        .delete-container a:hover {
+            background-color: #69B1C1;
+        }
+
+        /* Confirm Button */
+        .delete-container input[type="submit"] {
+            background-color: #E74C3C;
+            border: none;
+        }
+
+        .delete-container input[type="submit"]:hover {
+            background-color: #C0392B;
+        }
+    </style>
+</head>
+<body>
+    <div class="delete-container">
+        <p>Are you sure you want to delete Task "{{ item }}"?</p>
+        <a href="{% url 'list' %}">Cancel</a>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <input type="submit" name="Confirm" value="Confirm">
+        </form>
+    </div>
+</body>
+</html>
