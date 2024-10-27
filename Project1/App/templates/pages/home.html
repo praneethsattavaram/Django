@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+    <h2>Article List</h2>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                <h3><a href="{% url 'task' task.id %}">Article {{ forloop.counter }}: {{ task.name }}</a></h3>
+                <p>{{ task.desc|slice:":50" }}{% if task.desc|length > 50 %}...{% endif %}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+```

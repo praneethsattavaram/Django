@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Task List{% endblock %}</title>
+    <style>
+        /* Navigation Styles */
+        .nav-container {
+            background-color: #4B0082; 
+            padding: 25px; 
+            border-radius: 5px; 
+        }
+        .nav-list {
+            list-style-type: none; 
+            padding: 0; 
+            margin: 0; 
+            display: flex; 
+            justify-content: space-around; 
+            gap: 0;
+        }
+        .nav-list li {
+            margin: 0;
+            padding: 0; 
+        }
+        .nav-btn {
+            background-color: #4B0082; 
+            color: white; 
+            padding: 10px 15px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .nav-btn:hover {
+            background-color: #6A5ACD;
+        }
+        /* Additional styles for body */
+        body {
+            font-family: Arial, sans-serif; 
+            background-color: #f0f0f0; 
+            margin: 0; 
+        }
+        /* Container Styles */
+        .container {
+            max-width: 800px; 
+            margin: 40px auto; 
+            padding: 20px; 
+            background: white; 
+            border-radius: 5px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+        }
+        /* Header Styles */
+        h2 {
+            color: #1459b3; 
+            font-size: 2rem; 
+            text-align: center; 
+            margin-bottom: 20px; 
+        }
+        /* Task List Styling */
+        ul {
+            list-style: none; 
+            padding: 0; 
+            margin: 0; 
+        }
+        ul li {
+            margin-bottom: 15px; 
+            padding: 15px; 
+            background-color: #f0f4fa; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+            transition: transform 0.2s ease-in-out; 
+        }
+        ul li:hover {
+            transform: translateY(-5px); 
+        }
+        /* Task Link Styling */
+        ul li h3 {
+            margin: 0; 
+            font-size: 1.4rem; 
+            font-weight: 600; 
+        }
+        ul li h3 a {
+            color: #1a73e8; 
+            text-decoration: none; 
+            transition: color 0.3s ease; 
+        }
+        ul li h3 a:hover {
+            color: #0d47a1; 
+        }
+        /* Button Container */
+        .button-container {
+            
+            text-align: center;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-container">
+        <ul class="nav-list">
+            <li><a href="{% url 'home' %}" class="nav-btn">Home</a></li>
+            <li><a href="{% url 'about' %}" class="nav-btn">About</a></li>
+            <li><a href="{% url 'contact' %}" class="nav-btn">Contact</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
