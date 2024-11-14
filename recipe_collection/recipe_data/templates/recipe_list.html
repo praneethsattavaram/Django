@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+{% include 'recipe_create.html' %}
+
+<hr>
+
+<h1>The recipes are </h1>
+
+{% if recipes %}
+{% for recipe in recipes %}
+
+    <h1>hii</h1>
+    <h1> {{ recipe.Title }} </h1>
+    <h1> {{ recipe.Ingredients }} </h1>
+    <h2> {{ recipe.Preparation_time }} </h2>
+
+    {% comment %} <button><a href="{% url '' recipe.id%}">Edit</a></button> {% endcomment %}
+{% endfor %}
+{% else %}
+        <p>No recipes found.</p>
+{% endif %}
+
+{% endblock content %}
