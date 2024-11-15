@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content%}
+<form action="" method="post">
+
+    {% csrf_token %}
+
+    <label for="title"> Title   : </label>
+    <input type = "text" name = "title" id = "title" placeholder = "Enter name of the recipe" required> 
+
+    <br><br>
+    
+    <label for="ingredients"> Ingredients : </label>
+    <input type = "ingredients" name = "ingredients" id = "ingredients" placeholder = "Enter the Ingredients" required>
+    
+    <br><br>
+
+    <label for="time"> Preparation Time  :</label>
+    <input type = "text" name = "time" id = "time" placeholder = "Enter preparation time" required>
+
+    <br><br>
+
+    <label for="instructions"> Instructions : </label>
+    <textarea name = "instructions" id = "instructions" placeholder = "Enter the instructions" required rows="7" cols="20"></textarea>
+
+    <br><br>
+    
+    <button type="submit">Add Recipe</button>
+
+</form>
+
+{% endblock content %}

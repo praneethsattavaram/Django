@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<hr>
+
+{% if recipes %}
+<h1>The recipes are </h1>
+{% else %}
+    <h1>No recipes found.</h1>
+{% endif %}
+
+{% for recipe in recipes %}
+
+    <p> {{ recipe.Title }} </p>
+    <p> {{ recipe.Ingredients }} </p>
+    <p>Duration : {{ recipe.Preparation_time }} </p>
+    <p> {{ recipe.Instructions }} </p>
+
+    <button><a href="{% url 'update_recipe' recipe.id%}">Edit</a></button>
+    <button><a href="{% url 'delete_recipe' recipe.id%}">Remove</a></button>
+{% endfor %}
+
+
+{% endblock content %}
+
