@@ -1,0 +1,9 @@
+<!-- task.html -->
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Task Details</h2>
+    <h3>{{ article1.name }}</h3>
+    <p>{{ article1.desc }}</p>
+    <a href="{% url 'home' %}" class="nav-btn">Back to Home</a>
+{% endblock %}
