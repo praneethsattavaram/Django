@@ -3,24 +3,25 @@
 
 {% block content %}
 
-{% include 'recipe_create.html' %}
-
 <hr>
 
-<h1>The recipes are </h1>
-
 {% if recipes %}
-{% for recipe in recipes %}
-
-    <h1>hii</h1>
-    <h1> {{ recipe.Title }} </h1>
-    <h1> {{ recipe.Ingredients }} </h1>
-    <h2> {{ recipe.Preparation_time }} </h2>
-
-    {% comment %} <button><a href="{% url '' recipe.id%}">Edit</a></button> {% endcomment %}
-{% endfor %}
+<h1>The recipes are </h1>
 {% else %}
-        <p>No recipes found.</p>
+    <h1>No recipes found.</h1>
 {% endif %}
 
+{% for recipe in recipes %}
+
+    <p> {{ recipe.Title }} </p>
+    <p> {{ recipe.Ingredients }} </p>
+    <p>Duration : {{ recipe.Preparation_time }} </p>
+    <p> {{ recipe.Instructions }} </p>
+
+    <button><a href="{% url 'update_recipe' recipe.id%}">Edit</a></button>
+    <button><a href="{% url 'delete_recipe' recipe.id%}">Remove</a></button>
+{% endfor %}
+
+
 {% endblock content %}
+

@@ -6,8 +6,8 @@ from django.db import models
 class Recipe(models.Model):
     Title = models.CharField(max_length=100)
     Ingredients = models.TextField()
-    Preparation_time = models.CharField(max_length=10)
+    Preparation_time = models.TextField(max_length=10)
     Instructions = models.TextField()
     
-    def __str__(self):
+    def _str_(self):
         return self.Title
