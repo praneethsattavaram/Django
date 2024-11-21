@@ -11,4 +11,3 @@ class LaptopDetails(models.Model):
     def __str__(cls):
         return cls.name
     
-    

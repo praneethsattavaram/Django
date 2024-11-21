@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+{% for i in data%}
+
+<h3>{{ i.name}}</h3>
+<p> {{ i.processor }} </p>
+<p> {{ i.memory }} </p>
+<p> {{ i.screen_size}} </p>
+
+<button><a href="{% url 'edit_details' i.id%}">Edit</a></button>
+<button><a href="{% url 'delete_detail' i.id%}">Remove</a></button>
+
+<hr>
+
+{% endfor %}
+
+
+{% endblock content %}
+
