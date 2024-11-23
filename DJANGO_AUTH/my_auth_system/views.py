@@ -1,6 +1,6 @@
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 
@@ -22,7 +22,47 @@ def signup_view(request):
                     email = email,
                     password = password
                 )
-            return HttpResponse('<h1> Account Created Successfully </h1>')
+            return render('login')
     
     else:
         return render(request, 'signup.html')
+    
+    
+
+def login_view(request):
+    
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        
+        user = authenticate(request, username = username, password = password)
+        
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+            # return HttpResponse('Login Successful') 
+        else:
+            return render(request, 'login.html', {'msg': 'Invalid username or password'})
+
+        
+    return render(request, 'login.html')
+
+
+def home_view(request):
+    
+    if request.user.is_authenticated:
+        user = request.user
+        context = {
+            'username': user.username,
+        }
+        return render(request, 'home.html', context)
+    else:
+        return redirect('login')
+        
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')
+
+    
