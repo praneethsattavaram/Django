@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+<div>
+    <h3> Welcome Back! </h3>
+    <p>Here are your options</p>
+    <li><a href="{% url 'add_task' %}">Add Task</a></li>
+    <li><a href="">View Tasks</a></li>
+</div>
+
+{% else %}
+<div>
+    <h1>Hey User Please Login</h1>
+    <p>Login to Add your new Task or View your exisitng Tasks</p>
+</div>
+
+{% endif %}
+
+{% endblock content %}
