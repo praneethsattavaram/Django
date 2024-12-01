@@ -6,8 +6,8 @@
 <div>
     <h3> Welcome Back! </h3>
     <p>Here are your options</p>
-    <li><a href="">Add Task</a></li>
-    <li><a href="">View Tasks</a></li>
+    <li><a href="{% url 'add_task' %}">Add Task</a></li>
+    <li><a href="{% url 'view_task' %}">View Tasks</a></li>
 </div>
 
 {% else %}

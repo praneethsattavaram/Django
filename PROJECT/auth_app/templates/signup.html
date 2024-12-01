@@ -1,11 +1,11 @@
-    {% include "base.html" %}
+    {% extends "base.html" %}
 
-    {% block content %}
-    
+   {% block content %}
+    <h1>SIGN UP</h1>
     <form method="post"> 
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">SIGN UP</button>
     </form>
-
     {% endblock content %}
+

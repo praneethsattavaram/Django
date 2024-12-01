@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for task in tasks  %}
+<h1>{{ task.name }}</h1>
+<p> {{ task.desc }} </p>
+{% if task.image %} 
+<img src="{{ task.image.url }}"/>  
+{% else %}
+<p>No image</p>
+{% endif %}
+<p> {{ task.completed }}</p>
+<p> {{ task.created_at }}</p>
+{% endfor %}
+
+{% endblock content %}
