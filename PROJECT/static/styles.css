@@ -1,0 +1,114 @@
+/* General Styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5; /* Light background for better readability */
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header and Title */
+title {
+    text-transform: capitalize;
+}
+
+/* Navigation Bar */
+nav {
+    background-color: #000000; /* Deep black for the navbar */
+    color: white;
+    display: inline;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+    margin: 0 15px;
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav a:hover {
+    color: #bb86fc; /* Subtle highlight on hover */
+    transform: scale(1.1);
+}
+
+nav li{
+    display: inline;
+    
+}
+
+/* Main Content */
+div {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 2000px;
+    background-color: #ffffff; 
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
+    margin-top: 80px;
+    /* width: 600px; */
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Footer */
+footer {
+    background-color: #000000; /* Deep black for the footer */
+    color: #f4f4f4;
+    text-align: center;
+    padding: 40px;
+    box-shadow: 0px -4px 15px rgba(0, 0, 0, 0.5);
+    border-radius: 8px 8px 0 0;
+    margin-top: auto;
+    width: 100%;
+    position: sticky;
+    bottom: 0;
+}
+
+footer li{
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    justify-content: space-between;
+    margin: 0 100px;
+
+}
+
+footer a{
+    text-decoration: none;
+    color: #fff;
+    justify-content: 80vw;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav {
+        flex-wrap: wrap; /* Allows items to wrap if needed */
+    }
+
+    nav a {
+        margin: 10px;
+    }
+
+    div {
+        padding: 15px;
+        margin: 10px auto;
+    }
+}

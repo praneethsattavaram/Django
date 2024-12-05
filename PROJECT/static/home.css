@@ -1,0 +1,37 @@
+/* home.css */
+
+body {
+    background-color: #fff;
+    color: #121212;
+    font-family: Arial, sans-serif;
+}
+
+h1, h3 {
+    color: #fff;
+}
+
+p {
+    color: #ccc;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ccc;
+}
+
+li {
+    list-style-type: none;
+    margin-bottom: 10px;
+}
+
+/* Optional: Add some styling for the container div */
+div {
+    padding: 50px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #333;
+}

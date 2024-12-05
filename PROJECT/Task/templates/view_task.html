@@ -1,17 +1,51 @@
 {% extends "base.html" %}
 
+{% block extra_css %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'view_task.css' %}">
+{% endblock %}
+
 {% block content %}
 
-{% for task in tasks  %}
-<h1>{{ task.name }}</h1>
-<p> {{ task.desc }} </p>
-{% if task.image %} 
-<img src="{{ task.image.url }}"/>  
-{% else %}
-<p>No image</p>
-{% endif %}
-<p> {{ task.completed }}</p>
-<p> {{ task.created_at }}</p>
-{% endfor %}
+<div class="task-container">
+  <div class="pending-tasks">
+    <h2>Pending Tasks</h2>
+    {% for task in pending_tasks %}
+      <h3>{{ task.name }}</h3>
+      <p>{{ task.desc }}</p>
+      {% if task.image %}
+        <img style="height:300px; width:350px" src="{{ task.image.url }}" />
+      {% else %}
+        <p>No image</p>
+      {% endif %}
+      <p>{{ task.completed }}</p>
+      <p>{{ task.created_at }}</p>
+      <button><a href="{% url 'update_task' task.id %}">Update</a></button>
+      <button><a href="{% url 'delete_task' task.id %}">Delete</a></button>
+      <hr>
+    {% empty %}
+      <p>No pending tasks</p>
+    {% endfor %}
+  </div>
 
-{% endblock content %}
+  <div class="completed-tasks">
+    <h2>Completed Tasks</h2>
+    {% for task in completed_tasks %}
+      <h3>{{ task.name }}</h3>
+      <p>{{ task.desc }}</p>
+      {% if task.image %}
+        <img style="height:300px; width:350px" src="{{ task.image.url }}" />
+      {% else %}
+        <p>No image</p>
+      {% endif %}
+      <p>{{ task.completed }}</p>
+      <p>{{ task.created_at }}</p>
+      <button><a href="{% url 'delete_task' task.id %}">Delete</a></button>
+      <hr>
+    {% empty %}
+      <p>No completed tasks</p>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

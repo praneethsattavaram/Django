@@ -7,7 +7,11 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', views.home, name='home'),
     path('add_task', views.add_task, name='add_task'),
-    path('view_task', views.view_task, name='view_task') 
+    path('view_task', views.view_task, name='view_task'),
+    path('update_task/<int:id>', views.update_task, name='update_task'),
+    path('complete_task/<int:id>', views.complete_task, name='complete_task'),
+    path('delete_task/<int:id>', views.delete_task, name='delete_task')
+
 ]
 
 if settings.DEBUG:

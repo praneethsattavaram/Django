@@ -19,7 +19,11 @@ def sign_up(request):
         
     form = CustomUserCreationForm()
     
-    return render(request, 'signup.html', {'form' : form})
+    context = {
+        'title' : 'Sign Up',
+        'form' : 'form', 
+    } 
+    return render(request, 'signup.html', context)
 
 
 def log_in(request):
@@ -34,8 +38,13 @@ def log_in(request):
             messages.error(request, "Invalid username or password.")
     else:
         form = AuthenticationForm()
+        
+    context = {
+        'title' : 'Log In',
+        'form' : form
+    }
     
-    return render(request, 'login.html', {'form': form})
+    return render(request, 'login.html', context)
 
 
 def log_out(request):

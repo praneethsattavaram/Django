@@ -1,0 +1,62 @@
+.task-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  margin: 0 auto; /* Center the content hoirizontally */
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in-out;
+  width: 100vw; 
+}
+
+.pending-tasks, .completed-tasks {
+    flex: 1;
+    padding: 20px;
+}
+
+.task-header {
+    color: #333;
+    font-weight: bold;
+}
+
+body{
+  width: 100%;
+}
+  
+  .pending-tasks, .completed-tasks {
+    flex: 1;
+    padding: 20px;
+  }
+
+
+.task-item {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+.task-item:last-child {
+    border-bottom: none;
+}
+
+/* view_task.css */
+
+/* Inherits styles from base.html (if applicable) */
+
+.task-container button {
+    background-color: #333; /* Blue background */
+    color: #ffffff; /* White text */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px; /* Add some spacing between buttons */
+  }
+  
+.task-container a{
+  text-decoration: none;
+  color: #ffffff;
+}
+  .task-item button:hover {
+    background-color: #ccc; /* Darker blue on hover */
+  }
